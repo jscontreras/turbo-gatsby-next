@@ -8,9 +8,8 @@ export function middleware(request: any) {
   if (pathname.startsWith('/recipes/')) {
     console.log('first', '2901901320130290')
     // Rewrite the request to the destination URL
-    // const destUrl = new URL(`http://localhost:9000/${pathname.replace(`/test`, `recipes`)}`);
-    const destUrl = new URL(`gatsby.tc-vercel.dev:${pathname}/`);
-    console.log('destUrl', destUrl)
+    // const destUrl = new URL(`http://localhost:9000/${pathname}`);
+    const destUrl = new URL(`https://gatsby.tc-vercel.dev:${pathname}`);
     return NextResponse.rewrite(destUrl);
   }
 
