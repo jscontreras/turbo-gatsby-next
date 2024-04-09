@@ -6,10 +6,14 @@ export function middleware(request: any) {
 
   // Check if the URL matches the pattern for a rewrite
   if (pathname.startsWith('/recipes/')) {
-    console.log('first', '2901901320130290')
     // Rewrite the request to the destination URL
-    // const destUrl = new URL(`http://localhost:9000/${pathname}`);
     const destUrl = new URL(`https://gatsby.tc-vercel.dev:${pathname}`);
+    return NextResponse.rewrite(destUrl);
+  }
+  // Check if the URL matches the pattern for a rewrite
+  else if (pathname.startsWith('/blog')) {
+    // Rewrite the request to the destination URL
+    const destUrl = new URL(`https://www.contentful.com/blog`);
     return NextResponse.rewrite(destUrl);
   }
 
@@ -19,5 +23,5 @@ export function middleware(request: any) {
 
 export const config = {
   // Optionally, specify which paths this middleware applies to
-  matcher: '/recipes/:path*',
+  matcher: ['/recipes/:path*', '/blog'],
 };
