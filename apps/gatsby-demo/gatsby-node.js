@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const recipesResult = await graphql(`
     {
-      allRecipesJson (filter:{internal_id:{lt: 20}}) {
+      allRecipesJson (filter:{internal_id:{lt: 200}}) {
         nodes {
           id
           internal_id
