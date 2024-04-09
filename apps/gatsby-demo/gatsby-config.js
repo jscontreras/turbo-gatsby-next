@@ -48,6 +48,10 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
-    `gatsby-transformer-json`,
+     `gatsby-transformer-json`,
   ],
+  'proxy': {
+    prefix: "/next",
+    url: "https://next.tc-vercel.dev"
+  },
 }
