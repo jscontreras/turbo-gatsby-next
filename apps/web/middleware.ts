@@ -1,6 +1,9 @@
 // middleware.ts or middleware.js
 import { NextResponse } from 'next/server';
 
+const gatsby_assets = ['webpack-runtime', 'app-1']
+
+
 export function middleware(request: any) {
   const { pathname } = request.nextUrl;
 
@@ -17,11 +20,18 @@ export function middleware(request: any) {
     return NextResponse.rewrite(destUrl);
   }
 
+  // Getting extra assets
+  else if (gatsby_assets.some((preffix) => pathname.startsWith(preffix))) {
+    const destUrl = new URL(`https://www.contentful.com/${pathname}`);
+    return NextResponse.rewrite(destUrl);
+  }
+
   // For all other paths, do not apply any rewrites
   return NextResponse.next();
 }
 
+
 export const config = {
   // Optionally, specify which paths this middleware applies to
-  matcher: ['/recipes/:path*', '/blog'],
+  matcher: ['/recipes/:path*', '/blog', ...gatsby_assets ],
 };
