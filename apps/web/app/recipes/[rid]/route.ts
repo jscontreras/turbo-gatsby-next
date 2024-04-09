@@ -1,3 +1,5 @@
+export const runtime = 'edge' // 'nodejs' (default) | 'edge'
+
 export async function GET(request: Request) {
   // URL of the external page you want to fetch
   const { pathname } = new URL(request.url);
