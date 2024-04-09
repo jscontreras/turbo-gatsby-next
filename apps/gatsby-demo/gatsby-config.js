@@ -50,8 +50,4 @@ module.exports = {
     },
      `gatsby-transformer-json`,
   ],
-  'proxy': {
-    prefix: "/next",
-    url: "https://next.tc-vercel.dev"
-  },
 }
