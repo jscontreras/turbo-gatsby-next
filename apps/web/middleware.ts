@@ -13,7 +13,7 @@ export function middleware(request: any) {
   // Check if the URL matches the pattern for a rewrite
   else if (pathname.startsWith('/blog')) {
     // Rewrite the request to the destination URL
-    const destUrl = new URL(`https://www.contentful.com/blog`);
+    const destUrl = new URL(`https://www.contentful.com/blog/`);
     return NextResponse.rewrite(destUrl);
   }
 
