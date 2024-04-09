@@ -50,6 +50,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      turbo-ignore:
+        specifier: ^1.13.2
+        version: 1.13.2
     devDependencies:
       gatsby-plugin-pnpm:
         specifier: ^1.2.10
@@ -72,6 +75,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      turbo-ignore:
+        specifier: ^1.13.2
+        version: 1.13.2
     devDependencies:
       '@next/eslint-plugin-next':
         specifier: ^14.1.1
@@ -11352,6 +11358,11 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /turbo-ignore@1.13.2:
+    resolution: {integrity: sha512-5q6x4ld4kZDpZr0X5nTvC9TFuVVO8M8AxbmBvFtOmgFhJSqySDxOVVNRKCaCoTookHsY7rgs/3cGFzaeh29J1Q==}
+    hasBin: true
+    dev: false
 
   /turbo-linux-64@1.13.2:
     resolution: {integrity: sha512-7HnibgbqZrjn4lcfIouzlPu8ZHSBtURG4c7Bedu7WJUDeZo+RE1crlrQm8wuwO54S0siYqUqo7GNHxu4IXbioQ==}

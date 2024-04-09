@@ -13,7 +13,8 @@
     "gatsby-transformer-json": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "turbo-ignore": "^1.13.2"
   },
   "devDependencies": {
     "gatsby-plugin-pnpm": "^1.2.10",
