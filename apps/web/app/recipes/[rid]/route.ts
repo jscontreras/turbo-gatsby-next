@@ -20,7 +20,12 @@ export async function GET(request: Request) {
     // Return the HTML content as a response
     // Note: You might need to adjust the Content-Type header based on the content you're fetching
     return new Response(htmlContent, {
-      headers: { 'Content-Type': 'text/html' },
+      headers: { 'Content-Type': 'text/html',
+        // Adding cache to reduce function callbacks
+        'Cache-Control': 'max-age=10',
+        'CDN-Cache-Control': 'max-age=60',
+        'Vercel-CDN-Cache-Control': 'max-age=3600',
+       },
     });
   } catch (error) {
     console.error(error);
@@ -28,10 +33,6 @@ export async function GET(request: Request) {
       status: 500,
       headers: {
         'Content-Type': 'text/html',
-        // Adding cache to reduce function callbacks
-        'Cache-Control': 'max-age=10',
-        'CDN-Cache-Control': 'max-age=60',
-        'Vercel-CDN-Cache-Control': 'max-age=3600',
       },
     });
   }
