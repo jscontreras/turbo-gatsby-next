@@ -6,8 +6,8 @@ export async function GET(request: Request) {
   console.log('pathname', pathname)
   const url = `https://gatsby.tc-vercel.dev/${pathname}`;
   try {
-    // Fetch the external URL
-    const response = await fetch(url);
+    // Fetch the external URL (You can also cache this one to revalidatePath usage)
+    const response = await fetch(url, { cache: 'no-store' });
 
     // Check if the request was successful
     if (!response.ok) {
@@ -26,7 +26,13 @@ export async function GET(request: Request) {
     console.error(error);
     return new Response('<h1>Error fetching the page</h1>', {
       status: 500,
-      headers: { 'Content-Type': 'text/html' },
+      headers: {
+        'Content-Type': 'text/html',
+        // Adding cache to reduce function callbacks
+        'Cache-Control': 'max-age=10',
+        'CDN-Cache-Control': 'max-age=60',
+        'Vercel-CDN-Cache-Control': 'max-age=3600',
+      },
     });
   }
 }
