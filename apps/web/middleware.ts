@@ -7,6 +7,9 @@ const gatsby_assets = [
   '/framework.*',
   '/page-data/.*',
   'manifest.webmanifest',
+  '/icons.*',
+  '/favicon-.*',
+  '/(.*-.*.js)'
 ]
 
 
