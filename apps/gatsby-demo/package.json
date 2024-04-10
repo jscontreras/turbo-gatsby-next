@@ -17,6 +17,7 @@
     "turbo-ignore": "^1.13.2"
   },
   "devDependencies": {
+    "@types/node": "^20.11.24",
     "gatsby-plugin-pnpm": "^1.2.10",
     "prettier": "^2.8.8"
   },
