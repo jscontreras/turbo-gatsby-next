@@ -11,9 +11,9 @@ const gatsby_assets = [
   '/favicon-.*',
   '/(.*-.*.js)'
 ]
+let listedFilesSite1: any= null;
 
-
-export function middleware(request: any) {
+export async function middleware(request: any) {
   const { pathname } = request.nextUrl;
 
   // Check if the URL matches the pattern for a rewrite
@@ -35,9 +35,20 @@ export function middleware(request: any) {
     return re.test(pathname);
   }
   )) {
-    console.log('first', pathname)
-    const destUrl = new URL(`https://www.contentful.com/${pathname}`);
-    return NextResponse.rewrite(destUrl);
+    // Get Gatsby files
+    if (!listedFilesSite1) {
+      const response = await fetch(`https://gatsby.tc-vercel.dev/api/files`);
+      listedFilesSite1 = await response.json();
+    }
+
+    // Check paths correspondance
+    if(typeof listedFilesSite1[pathname] !== 'undefined') {
+      const destUrl = new URL(`https://gatsby.tc-vercel.dev${pathname}`);
+      return NextResponse.rewrite(destUrl);
+    } else {
+      const destUrl = new URL(`https://www.contentful.com${pathname}`);
+      return NextResponse.rewrite(destUrl);
+    }
   }
 
   // For all other paths, do not apply any rewrites
