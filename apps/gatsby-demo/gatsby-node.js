@@ -44,6 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   recipesResult.data.allRecipesJson.nodes.forEach((node) => {
     createPage({
+      defer: true,
       path: `/recipes/${node.internal_id}`,
       component: path.resolve(`./src/templates/recipesPage.js`),
       context: {
