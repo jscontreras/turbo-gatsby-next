@@ -1,20 +1,20 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import fs from 'fs';
+import  path from 'path';
 
-let filesF: string[] | null = null;
+let filesF = null;
 
-const fileExtensions: string[] = ['.js', '.json'];
+const fileExtensions = ['.js', '.json'];
 
-export function GET(_request: Request): Response {
+export function GET(_request) {
   if (!filesF) {
-    filesF = listFilesSync();
+    filesF = convertArrayToObject(listFilesSync());
   }
   return new Response(JSON.stringify(filesF), {
     headers: {
       'Content-Type': 'application/json',
       'Vercel-CDN-Cache-Control': 'max-age=3600',
       'CDN-Cache-Control': 'max-age=60',
-      'Cache-Control': 'max-age=10',
+      'Cache-Control': 'max - age=10',
     },
     status: 200 // HTTP status code for OK
   });
@@ -22,19 +22,21 @@ export function GET(_request: Request): Response {
 
 /**
  * Print Files from public folder
- * @param dirPath
- * @param arrayOfFiles
+ * @param {*} dirPath
+ * @param {*} arrayOfFiles
  * @returns
  */
-function getAllFilesSync(dirPath: string, arrayOfFiles: string[] = []): string[] {
+function getAllFilesSync(dirPath, arrayOfFiles = []) {
   const files = fs.readdirSync(dirPath, { withFileTypes: true });
 
   files.forEach(file => {
     if (file.isDirectory()) {
       arrayOfFiles = getAllFilesSync(path.join(dirPath, file.name), arrayOfFiles);
     } else {
-      if (fileExtensions.some(ext => file.name.endsWith(ext))) {
-        const fPath = path.join(dirPath, file.name).split('/public').pop()!;
+      if (fileExtensions.some(ext => {
+        return file.name.endsWith(ext);
+      })) {
+        const fPath = path.join(dirPath, file.name).split('/public').pop();
         arrayOfFiles.push(fPath);
       }
     }
@@ -44,7 +46,7 @@ function getAllFilesSync(dirPath: string, arrayOfFiles: string[] = []): string[]
 }
 
 // Usage example
-function listFilesSync(): string[] {
+function listFilesSync() {
   try {
     const dirPath = path.join(__dirname, '../public'); // Replace with your directory path
     const files = getAllFilesSync(dirPath);
@@ -54,3 +56,10 @@ function listFilesSync(): string[] {
     return [];
   }
 }
+
+const convertArrayToObject = (array) => {
+  return array.reduce((obj, item) => {
+    obj[item] = true;
+    return obj;
+  }, {});
+};
