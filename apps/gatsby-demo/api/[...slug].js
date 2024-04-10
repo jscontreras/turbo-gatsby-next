@@ -1,11 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
+let filesF =null;
+
 const fileExtensions = ['.js', '.json'];
 
 export function GET(_request) {
-    const files = listFilesSync();
-    return new Response(JSON.stringify(files), {
+    if (!filesF) {
+      filesF = listFilesSync();
+    }
+    return new Response(JSON.stringify(filesF), {
       headers: {
         'Content-Type': 'application/json',
         'Vercel-CDN-Cache-Control':'max-age=3600',
