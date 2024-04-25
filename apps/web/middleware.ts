@@ -37,6 +37,7 @@ export async function middleware(request: any) {
   )) {
     // Get Gatsby files
     if (!listedFilesSite1) {
+      console.log('#####fetching######');
       const response = await fetch(`https://gatsby.tc-vercel.dev/api/files`);
       listedFilesSite1 = await response.json();
     }
