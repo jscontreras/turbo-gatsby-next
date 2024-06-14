@@ -3,9 +3,8 @@
   "extends": [
     "//"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
-      // include .vercel to ensure output is cached when deploying on Vercel (https://vercel.com/docs/build-output-api/v3)
       "outputs": [
         "public/**",
         ".cache/**",
