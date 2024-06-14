@@ -11,7 +11,7 @@ const gatsby_assets = [
   '/favicon-.*',
   '/(.*-.*.js)'
 ]
-let listedFilesSite1: any= null;
+let listedFilesSite1: any = null;
 
 export async function middleware(request: any) {
   const { pathname } = request.nextUrl;
@@ -45,7 +45,7 @@ export async function middleware(request: any) {
     }
 
     // Check paths correspondance
-    if(typeof listedFilesSite1[pathname] !== 'undefined') {
+    if (typeof listedFilesSite1[pathname] !== 'undefined') {
       const destUrl = new URL(`https://gatsby.tc-vercel.dev${pathname}`);
       return NextResponse.rewrite(destUrl);
     } else {
@@ -64,6 +64,14 @@ export const config = {
   matcher: [
     '/recipes/:path*',
     '/blog',
+    '/webpack-runtime.*',
+    '/app-1.*',
+    '/framework.*',
+    '/page-data/.*',
+    'manifest.webmanifest',
+    '/icons.*',
+    '/favicon-.*',
+    '/(.*-.*.js)',
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
-    ...gatsby_assets],
+  ]
 };
