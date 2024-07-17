@@ -13,6 +13,10 @@
         ".next/**",
         "!.next/cache/**",
         ".vercel/output/**"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "**/vercel.json"
       ]
     },
     "lint": {
