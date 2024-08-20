@@ -6,16 +6,13 @@
     }
   ],
   "functions": {
-    "pages/api/**/*": {
+    "pages/api/**/*.ts": {
       "memory": 368
     },
-    "app/api/**/*": {
+    "app/api/**/*.ts": {
       "memory": 256
     },
-    "app/**/*": {
-      "memory": 512
-    },
-    "pages/**/*": {
+    "app/**/*.tsx": {
       "memory": 512
     }
   }
