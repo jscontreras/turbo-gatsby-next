@@ -11,6 +11,12 @@
     },
     "pages/**/*": {
       "memory": 512
+    },
+    "pages/api/**/*": {
+      "memory": 368
+    },
+    "app/api/**/*": {
+      "memory": 256
     }
   }
 }
