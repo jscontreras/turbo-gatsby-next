@@ -6,7 +6,7 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     const { path } = req.query; // Access the dynamic segment
-    return res.json({ found: true, slug: path });
+    return res.json({ test: 'test(pages)', slug: path });
   } else {
     // Handle any other HTTP method
     res.status(405).json({ error: 'Method Not Allowed' });
