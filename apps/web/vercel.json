@@ -6,17 +6,17 @@
     }
   ],
   "functions": {
-    "app/**/*": {
-      "memory": 512
-    },
-    "pages/**/*": {
-      "memory": 512
-    },
     "pages/api/**/*": {
       "memory": 368
     },
     "app/api/**/*": {
       "memory": 256
+    },
+    "app/**/*": {
+      "memory": 512
+    },
+    "pages/**/*": {
+      "memory": 512
     }
   }
 }
