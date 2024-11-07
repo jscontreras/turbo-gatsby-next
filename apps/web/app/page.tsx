@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Card } from "@repo/ui/card";
 import { Code } from "@repo/ui/code";
-import styles from "./page.module.css";
+import styles from '../extras/selected-brand/page.module.css'
 import { Button } from "@repo/ui/button";
 
 function Gradient({
@@ -79,7 +79,7 @@ export default function Page(): JSX.Element {
       </div>
 
       <Button appName="web" className={styles.button}>
-        Click me!
+        {`Click me! ${process.env.BRAND}`}
       </Button>
 
       <div className={styles.hero}>

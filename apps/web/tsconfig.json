@@ -13,10 +13,16 @@
     "next-env.d.ts",
     "next.config.js",
     "**/*.ts",
+    "**/*.js",
     "**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "paths": {
+    "@brand": [
+      "apps/web/extras/brand1/config.ts"
+    ]
+  },
 }

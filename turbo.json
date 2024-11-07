@@ -1,10 +1,12 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["BRAND"],
   "globalDependencies": [
     "**/.env.*local"
   ],
   "tasks": {
     "build": {
+      "env": ["BRAND"],
       "dependsOn": [
         "^build"
       ],
